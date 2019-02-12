@@ -229,7 +229,7 @@ def main():
         logger.print_lots('Start lots', lots)
         wash_all_lots(lots, logger)
         if parsed.out_file:
-            with open(parsed.out_file, 'w') as f:
+            with open(parsed.out_file, mode='w') as f:
                 lots.write_csv_data(f)
         else:
             logger.print_lots('Final lots', lots)

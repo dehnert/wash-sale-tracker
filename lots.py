@@ -459,7 +459,12 @@ class Lots(object):
 
         def convert_to_int(value):
             if value:
-                return int(value)
+                try:
+                    return int(value)
+                except ValueError, e:
+                    if '.' in value:
+                        print Lots._color_string('red', 'Decimal point in integer value -- did you remember to express prices as a number of *cents*, not dollars?\n')
+                    raise
             return 0
 
         def convert_to_date(value):
